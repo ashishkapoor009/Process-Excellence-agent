@@ -46,249 +46,189 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-12 px-4 sm:px-6 lg:px-8 font-sans">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="max-w-5xl mx-auto space-y-6">
         
         {/* Header */}
-        <div className="text-center space-y-4 mb-12">
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }} 
-            animate={{ scale: 1, opacity: 1 }} 
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center justify-center p-4 bg-brand-500 rounded-2xl shadow-lg shadow-brand-500/30 mb-2"
-          >
-            <Activity className="w-10 h-10 text-white" />
-          </motion.div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Process Excellence <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-indigo-600">Copilot</span>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-blue-700 mb-2 flex items-center justify-center">
+            ⚙️ Process Excellence Copilot
           </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Harness the power of AI to identify simplification, standardization, and automation opportunities in your workflows.
+          <p className="text-lg text-slate-600">
+            Analyze workflows, eliminate waste, and discover AI automation opportunities using Lean/Six Sigma principles.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          {/* Input Form Panel */}
-          <motion.div 
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            className="lg:col-span-5 glass-panel p-8"
-          >
-            <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-              <Settings className="w-6 h-6 mr-2 text-brand-500" />
-              Process Context
-            </h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1">Process Name</label>
-                <input 
-                  type="text" 
-                  name="process_name"
-                  required
-                  value={formData.process_name}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all bg-white/50 backdrop-blur-sm"
-                  placeholder="e.g., Health claims processing"
-                />
+        {/* Inputs section */}
+        <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-6">
+          <form onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+              {/* Left Column */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-slate-800 border-b pb-2">📋 Process Details</h3>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Process Name</label>
+                  <input 
+                    type="text" 
+                    name="process_name"
+                    required
+                    value={formData.process_name}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="e.g., Health claims processing"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Target Goal</label>
+                  <input 
+                    type="text" 
+                    name="target_goal"
+                    required
+                    value={formData.target_goal}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="e.g., Reduce claims processing time by 50%"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1">Current Workflow Steps</label>
-                <textarea 
-                  name="workflow_steps"
-                  required
-                  rows="3"
-                  value={formData.workflow_steps}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all bg-white/50 backdrop-blur-sm"
-                  placeholder="e.g., 1. Receive claim 2. Data entry 3. Verification..."
-                />
+              {/* Right Column */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-slate-800 border-b pb-2">🔄 Current State</h3>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Current Workflow Steps</label>
+                  <textarea 
+                    name="workflow_steps"
+                    required
+                    rows="3"
+                    value={formData.workflow_steps}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="e.g., 1. Receive claim 2. Data entry 3. Verification..."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Known Pain Points / Bottlenecks</label>
+                  <textarea 
+                    name="pain_points"
+                    required
+                    rows="2"
+                    value={formData.pain_points}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="e.g., Manual verification takes too long and causes backlog."
+                  />
+                </div>
               </div>
+            </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1">Known Pain Points</label>
-                <textarea 
-                  name="pain_points"
-                  required
-                  rows="2"
-                  value={formData.pain_points}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all bg-white/50 backdrop-blur-sm"
-                  placeholder="e.g., Manual verification takes too long and causes backlog."
-                />
-              </div>
+            <button 
+              type="submit" 
+              disabled={isLoading}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg shadow-sm transition-colors disabled:opacity-50 flex items-center justify-center text-lg"
+            >
+              {isLoading ? (
+                <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Analyzing Process...</>
+              ) : (
+                "Analyze Process & Generate Plan ✨"
+              )}
+            </button>
+          </form>
+        </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1">Target Goal</label>
-                <input 
-                  type="text" 
-                  name="target_goal"
-                  required
-                  value={formData.target_goal}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all bg-white/50 backdrop-blur-sm"
-                  placeholder="e.g., Reduce claims processing time by 50%"
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                disabled={isLoading}
-                className="w-full mt-4 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-brand-500/30 transition-all transform hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center"
-              >
-                {isLoading ? (
-                  <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Analyzing Workflow...</>
-                ) : (
-                  <><Zap className="w-5 h-5 mr-2" /> Generate Transformation Plan</>
-                )}
-              </button>
-            </form>
-          </motion.div>
-
-          {/* Results Panel */}
-          <motion.div 
-            initial={{ x: 20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            className="lg:col-span-7"
-          >
+        {/* Results Section */}
+        <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+          <div className="bg-slate-50 px-6 py-4 border-b border-slate-200 flex items-center cursor-pointer">
+            <h3 className="text-lg font-medium text-slate-800 flex-1">Transformation Plan Output</h3>
+          </div>
+          <div className="p-6">
             <AnimatePresence mode="wait">
               {!result && !isLoading && !error && (
-                <motion.div 
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  className="h-full flex flex-col items-center justify-center p-12 text-center glass-panel"
-                >
-                  <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-6">
-                    <Zap className="w-10 h-10 text-slate-400" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-700 mb-2">Ready to Optimize</h3>
-                  <p className="text-slate-500 max-w-md">Provide your process details on the left, and our AI Copilot will generate a structured Lean & Automation transformation plan.</p>
-                </motion.div>
+                <div className="text-slate-500 italic">
+                  *Your transformation plan will appear here...*
+                </div>
               )}
 
               {isLoading && (
-                <motion.div 
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  className="h-full flex flex-col items-center justify-center p-12 text-center glass-panel"
-                >
-                  <div className="relative w-24 h-24 mb-6">
-                    <div className="absolute inset-0 border-4 border-brand-200 rounded-full"></div>
-                    <div className="absolute inset-0 border-4 border-brand-500 rounded-full border-t-transparent animate-spin"></div>
-                    <Zap className="w-8 h-8 text-brand-500 absolute inset-0 m-auto animate-pulse" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-700 animate-pulse">Running LCEL Prompt Chain...</h3>
-                  <p className="text-slate-500 mt-2">Analyzing waste, mapping standardization, and finding AI opportunities.</p>
-                </motion.div>
+                <div className="flex flex-col items-center justify-center py-8 text-blue-600">
+                  <Loader2 className="w-8 h-8 animate-spin mb-2" />
+                  <p>Running Prompt Chain...</p>
+                </div>
               )}
 
               {error && (
-                <motion.div 
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  className="h-full flex flex-col items-center justify-center p-12 text-center glass-panel border-red-200 bg-red-50/50"
-                >
-                  <div className="text-red-500 text-lg font-semibold mb-2">Analysis Failed</div>
-                  <div className="text-slate-600">{error}</div>
-                </motion.div>
+                <div className="text-red-600 bg-red-50 p-4 rounded-lg">
+                  <strong>Analysis Failed:</strong> {error}
+                </div>
               )}
 
               {result && !isLoading && (
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                  className="space-y-6"
+                  initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                  className="space-y-6 prose prose-slate max-w-none"
                 >
-                  <div className="flex gap-4">
-                    <div className="glass-panel p-6 flex-1 flex items-center justify-between">
-                      <div>
-                        <div className="text-sm font-semibold text-slate-500 mb-1 uppercase tracking-wider">Impact Score</div>
-                        <div className="text-3xl font-extrabold text-slate-900">{result.overall_impact_score}<span className="text-lg text-slate-400">/10</span></div>
-                      </div>
-                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                        <Activity className="w-6 h-6 text-green-600" />
-                      </div>
-                    </div>
-                    <div className="glass-panel p-6 flex-1 flex items-center justify-between">
-                      <div>
-                        <div className="text-sm font-semibold text-slate-500 mb-1 uppercase tracking-wider">Est. Effort</div>
-                        <div className="text-2xl font-extrabold text-slate-900">{result.estimated_effort}</div>
-                      </div>
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <CheckCircle2 className="w-6 h-6 text-blue-600" />
-                      </div>
-                    </div>
+                  <div className="border-b pb-4">
+                    <h2 className="text-2xl font-bold flex items-center mb-4">
+                      🚀 Process Transformation Plan
+                    </h2>
+                    <p className="text-lg mb-1">
+                      <strong>Business Impact:</strong> {"🔵".repeat(result.overall_impact_score)}{"⚪".repeat(10 - result.overall_impact_score)} ({result.overall_impact_score}/10)
+                    </p>
+                    <p className="text-lg">
+                      <strong>Estimated Effort:</strong> {result.estimated_effort}
+                    </p>
                   </div>
 
-                  <div className="glass-panel overflow-hidden">
-                    
-                    {/* Section 1 */}
-                    <div className="p-6 border-b border-slate-100">
-                      <h3 className="text-lg font-bold text-slate-800 flex items-center mb-4">
-                        <RefreshCw className="w-5 h-5 text-brand-500 mr-2" />
-                        Process Simplification
-                      </h3>
-                      <ul className="space-y-3">
-                        {result.process_simplification.map((item, i) => (
-                          <li key={i} className="flex items-start">
-                            <ChevronRight className="w-5 h-5 text-brand-400 mr-2 flex-shrink-0 mt-0.5" />
-                            <span className="text-slate-700">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Section 2 */}
-                    <div className="p-6 border-b border-slate-100 bg-slate-50/50">
-                      <h3 className="text-lg font-bold text-slate-800 flex items-center mb-4">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 mr-2" />
-                        Standardization Opportunities
-                      </h3>
-                      <ul className="space-y-3">
-                        {result.process_standardization.map((item, i) => (
-                          <li key={i} className="flex items-start">
-                            <ChevronRight className="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
-                            <span className="text-slate-700">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Section 3 */}
-                    <div className="p-6 border-b border-slate-100">
-                      <h3 className="text-lg font-bold text-slate-800 flex items-center mb-4">
-                        <Cpu className="w-5 h-5 text-indigo-500 mr-2" />
-                        Automation & AI Ideas
-                      </h3>
-                      <ul className="space-y-3">
-                        {result.automation_and_ai.map((item, i) => (
-                          <li key={i} className="flex items-start">
-                            <ChevronRight className="w-5 h-5 text-indigo-400 mr-2 flex-shrink-0 mt-0.5" />
-                            <span className="text-slate-700">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Section 4 */}
-                    <div className="p-6 bg-slate-50/50">
-                      <h3 className="text-lg font-bold text-slate-800 flex items-center mb-4">
-                        <Zap className="w-5 h-5 text-amber-500 mr-2" />
-                        Continuous Improvement
-                      </h3>
-                      <ul className="space-y-3">
-                        {result.improvement_opportunities.map((item, i) => (
-                          <li key={i} className="flex items-start">
-                            <ChevronRight className="w-5 h-5 text-amber-400 mr-2 flex-shrink-0 mt-0.5" />
-                            <span className="text-slate-700">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
+                  <div>
+                    <h3 className="text-xl font-bold flex items-center mb-3 text-slate-800">
+                      🔍 Identified Inefficiencies & Waste (Simplification)
+                    </h3>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {result.process_simplification.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold flex items-center mb-3 text-slate-800">
+                      🛠️ Lean / Six Sigma Recommendations (Standardization)
+                    </h3>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {result.process_standardization.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold flex items-center mb-3 text-slate-800">
+                      🤖 AI & Automation Opportunities
+                    </h3>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {result.automation_and_ai.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="bg-slate-50 p-4 rounded-lg border">
+                    <h3 className="text-lg font-bold mb-2">📈 Expected Business Impact / Continuous Improvement</h3>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {result.improvement_opportunities.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
