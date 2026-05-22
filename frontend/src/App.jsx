@@ -90,7 +90,7 @@ export default function App() {
                   value={formData.process_name}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all bg-white/50 backdrop-blur-sm"
-                  placeholder="e.g., Vendor Onboarding"
+                  placeholder="e.g., Health claims processing"
                 />
               </div>
 
@@ -103,7 +103,7 @@ export default function App() {
                   value={formData.workflow_steps}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all bg-white/50 backdrop-blur-sm"
-                  placeholder="Describe step-by-step what happens today..."
+                  placeholder="e.g., 1. Receive claim 2. Data entry 3. Verification..."
                 />
               </div>
 
@@ -116,7 +116,7 @@ export default function App() {
                   value={formData.pain_points}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all bg-white/50 backdrop-blur-sm"
-                  placeholder="Where are the bottlenecks?"
+                  placeholder="e.g., Manual verification takes too long and causes backlog."
                 />
               </div>
 
@@ -129,7 +129,7 @@ export default function App() {
                   value={formData.target_goal}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all bg-white/50 backdrop-blur-sm"
-                  placeholder="e.g., Reduce cycle time by 40%"
+                  placeholder="e.g., Reduce claims processing time by 50%"
                 />
               </div>
 
